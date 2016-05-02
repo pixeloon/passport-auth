@@ -1,0 +1,25 @@
+{
+  "name": "passport-basic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.0",
+    "cookie-session": "^2.0.0-alpha.1",
+    "dot-env": "0.0.1",
+    "express": "^4.13.4",
+    "generate-secret": "^0.1.7",
+    "jade": "^1.11.0",
+    "knex": "^0.10.0",
+    "method-override": "^2.3.5",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pg": "^4.5.5"
+  }
+}
