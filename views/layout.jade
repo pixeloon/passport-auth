@@ -3,7 +3,7 @@ html
   head
     meta(charset='utf-8')
     title Programming Bytes Homepage
-    link(rel='stylesheet', href='/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/css/bootstrap.css')
   body
     nav.navbar.navbar-inverse
       .container
@@ -16,12 +16,20 @@ html
           a.navbar-brand(href='#') Programming Bytes
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li
+            li(class=(title === 'Home' ? 'active' : ''))
               a(href='/') Home
-            li
+            li(class=(title === 'About' ? 'active' : ''))
               a(href='/about') About
-            li
+            li(class=(title === 'Contact' ? 'active' : ''))
               a(href='/contact') Contact
+          ul.nav.navbar-nav.navbar-right
+            li(class=(title === 'Register' ? 'active' : ''))
+              if (currentUser)
+                a(href='/auth/logout') Logout
+              else 
+                a(href='/auth/register') Register
+                li(class=(title === 'Login' ? 'active' : ''))
+                  a(href='/auth/login') Sign In
     block content
 
   

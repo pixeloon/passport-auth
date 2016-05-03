@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  .container
+    h3 Register
+    form.form-horizontal(action='/auth/register' method='POST' enctype='multipart/form-data')
+      .form-group
+        label.col-sm-2.control-label First Name
+        .col-sm-10
+          input.form-control(type='text', name='fname' placeholder='Enter First Name' autofocus)
+      .form-group
+        label.col-sm-2.control-label Last Name
+        .col-sm-10
+          input.form-control(type='text', name='lname' placeholder='Enter Last Name' autofocus)
+      .form-group
+        label.col-sm-2.control-label(for='inputEmail3') Email
+        .col-sm-10
+          input#inputEmail.form-control(type='email', name='email' placeholder='Enter Email' autofocus)
+      .form-group
+        label.col-sm-2.control-label(for='inputPassword3') Password
+        .col-sm-10
+          input#inputPassword.form-control(type='password', name='password' placeholder='Enter Password')
+      .form-group
+        label.col-sm-2.control-label(for='inputPassword3') Confirm Password
+        .col-sm-10
+          input#inputPassword.form-control(type='password', name='password2' placeholder='Confirm Password')
+      .form-group
+        label.col-sm-2.control-label(for='inputPassword3') Profile Image
+        .col-sm-10
+          input#inputPassword.form-control(type='file', name="profileimage")
+
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          input.btn.btn-default(type='submit' name='submit' value='Register') 
+

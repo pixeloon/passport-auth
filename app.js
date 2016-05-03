@@ -10,10 +10,12 @@ const morgan = require('morgan');
 const routes = require('./routes');
 const flash = require('connect-flash');
 const passport = require('passport');
+const expressValidator = require('express-validator');
 const LocalStrategy = require('passport-local').Strategy;
-const passportHelpers = require("./helpers/passportHelpers")
-const helpers = require("./helpers/authHelpers")
+const passportHelpers = require("./helpers/passportHelpers");
+const helpers = require("./helpers/authHelpers");
 const multer =  require('multer');
+const upload = multer({dest: './uploads'})
 
 app.set('view engine', 'jade');
 app.use(express.static(__dirname + "/public"));
@@ -33,8 +35,25 @@ app.use(flash())
 
 app.use(helpers.currentUser)
 
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+
 app.get("/", function(req,res){
-    res.render("index");
+    res.render("index", {title: 'Home'});
 })
 //
 // app.use("/users/:user_id/courses", routes.courses);

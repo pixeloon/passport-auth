@@ -10,7 +10,7 @@ const helpers = require("../helpers/authHelpers")
 const passportHelpers = require("../helpers/passportHelpers")
 
 router.get('/login', helpers.preventLoginSignup, function(req,res){
-  res.render("auth/login", {message: req.flash('error')})
+  res.render("auth/login", {title: 'Login', message: req.flash('error')})
 });
 
 router.post('/login',
@@ -26,6 +26,10 @@ router.post('/login',
 router.get('/logout', function(req,res){
   req.logout();
   res.redirect('/auth/login')
+});
+
+router.get('/register', (req,res) => {
+  res.render('auth/register', {title: 'Register'});
 });
 
 
