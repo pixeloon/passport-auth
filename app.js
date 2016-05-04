@@ -14,16 +14,13 @@ const expressValidator = require('express-validator');
 const LocalStrategy = require('passport-local').Strategy;
 const passportHelpers = require("./helpers/passportHelpers");
 const helpers = require("./helpers/authHelpers");
-const multer =  require('multer');
-const upload = multer({dest: './uploads'})
+var multer = require('multer');
+var upload = multer({dest: './uploads'});
 
 app.set('view engine', 'jade');
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended:true}) );
 app.use(methodOverride("_method"));
-
-//Handle file uploads
-// app.use(multer({dest: "./uploads"}));
 
 app.use(session({
   secret: process.env.SECRET
@@ -55,6 +52,7 @@ app.use(expressValidator({
 app.get("/", function(req,res){
     res.render("index", {title: 'Home'});
 })
+
 //
 // app.use("/users/:user_id/courses", routes.courses);
 app.use("/users", routes.users);

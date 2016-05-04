@@ -27,7 +27,7 @@ html
               if (currentUser)
                 a(href='/auth/logout') Logout
               else 
-                a(href='/auth/register') Register
+                a(href='/users/new') Register
                 li(class=(title === 'Login' ? 'active' : ''))
                   a(href='/auth/login') Sign In
     block content
